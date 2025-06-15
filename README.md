@@ -4,7 +4,7 @@
 
 ## 機能
 
-- APKPureから最新のLoveLive XAPKを自動ダウンロード
+- APKComboから最新のLoveLive XAPKを自動ダウンロード
 - XAPKからil2cpp.soとglobal-metadata.datを抽出
 - Il2CppDumperを使用してdump.csを生成
 - GitHub Releasesにdump.csを自動アップロード
@@ -58,7 +58,3 @@ APKにFrida Gadgetをインジェクトし、デバッグ可能なAPKを生成�
 ### 4. 自動リリース
 
 GitHub Actionsを有効にすることで、毎週自動的に最新のdump.csを生成してリリースすることができます。
-
-## ライセンス
-
-MITライセンス
