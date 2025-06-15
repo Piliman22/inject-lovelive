@@ -1,0 +1,50 @@
+name: Dump IL2CPP and Release
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  dump-and-release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Download and extract XAPK and Il2CppDumper
+        run: python ./scripts/download_and_extract.py
+
+      - name: Generate dump.cs
+        run: python ./scripts/generate_dump.py
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: LoveLive IL2CPP Dump ${{ github.run_number }}
+          draft: false
+          prerelease: false
+
+      - name: Upload dump.cs
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./output/dump.cs
+          asset_name: dump.cs
+          asset_content_type: text/plain
