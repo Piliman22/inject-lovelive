@@ -4,7 +4,7 @@
 
 ## 機能
 
-- APKPureから最新のLoveLive XAPKを自動ダウンロード
+- APKComboから最新のLoveLive XAPKを自動ダウンロード
 - XAPKからil2cpp.soとglobal-metadata.datを抽出
 - Il2CppDumperを使用してdump.csを生成
 - GitHub Releasesにdump.csを自動アップロード
@@ -63,7 +63,3 @@ GitHub Actionsを有効にすることで、毎週自動的に最新のdump.cs�
 ```bash
 adb install-multiple signed-config.arm64_v8a.apk injected-signed.apk
 ```
-
-## ライセンス
-
-MITライセンス
