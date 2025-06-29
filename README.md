@@ -59,6 +59,11 @@ APKにFrida Gadgetをインジェクトし、デバッグ可能なAPKを生成�
 
 GitHub Actionsを有効にすることで、毎週自動的に最新のdump.csを生成してリリースすることができます。
 
+### 5. インストール
+```bash
+adb install-multiple signed-config.arm64_v8a.apk injected-signed.apk
+```
+
 ## ライセンス
 
 MITライセンス
